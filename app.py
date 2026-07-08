@@ -257,6 +257,18 @@ def render_sidebar():
 # ============================================================
 # 主页 - 显示当前章节的学习内容
 # ============================================================
+        st.divider()
+        st.markdown("### \U0001F431 学习伙伴")
+        mgr = st.session_state.get("cat_mood_mgr")
+        rate = mgr.data.get("completion_rate", 0) if mgr else 0
+        mood = mgr.mood_class if mgr else "normal"
+        act = st.session_state.get("cat_action", "sleep")
+        bub = st.session_state.get("cat_bubble", "")
+        fw = st.session_state.get("cat_fireworks", False)
+        st.markdown(get_cat_html(act, bub, fw, mood, rate), unsafe_allow_html=True)
+        if fw:
+            st.session_state.cat_fireworks = False
+
 def render_main():
     sec_id = st.session_state.current_section
     elapsed = datetime.datetime.now() - st.session_state.study_timer_start
