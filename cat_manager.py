@@ -166,7 +166,7 @@ def get_cat_styles():
 .cat-dance {
     animation: catDance 0.8s ease infinite;
 }
-@keyframes catDance {
+@keyframes catDance3d {
     0% { transform: translateY(0) rotate(0deg); }
     15% { transform: translateY(-20px) rotate(-10deg); }
     30% { transform: translateY(-10px) rotate(10deg); }
@@ -207,6 +207,10 @@ def get_cat_styles():
     border-top: 8px solid #52b788;
 }
 
+
+/* 3D Container */
+.cat-3d-wrap { perspective: 800px; transform-style: preserve-3d; display: inline-block; }
+.cat-3d { transform-style: preserve-3d; display: inline-block; transition: transform 0.3s ease; }
 /* 档案弹窗 */
 .cat-modal-overlay {
     display: none; position: fixed;
@@ -330,7 +334,7 @@ def get_cat_html(action="sleep", bubble_text="", show_fireworks=False, mood="nor
     
     html = f"""
     <div class="cat-box" id="cat-box">
-        <div class="cat-img-wrap {anim_class}">
+        <div class="cat-3d-wrap"><div class="cat-3d {anim_class}">
             {img_html}
         </div>
         {zzz_html}
