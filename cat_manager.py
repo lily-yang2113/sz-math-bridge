@@ -8,19 +8,7 @@ import base64
 import datetime
 from pathlib import Path
 
-CAT_PHOTO_PATH = "cat.jpg"
-
-def _load_photo_b64():
-    if CAT_PHOTO_PATH and Path(CAT_PHOTO_PATH).exists():
-        try:
-            with open(CAT_PHOTO_PATH, "rb") as f:
-                data = base64.b64encode(f.read()).decode()
-            return "data:image/jpeg;base64," + data
-        except:
-            return ""
-    return ""
-
-CAT_PHOTO_B64 = _load_photo_b64()
+CAT_SVG_B64 = 'data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMTQwIDE2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8ZGVmcz4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0ic2lsdmVyR3JhZCIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiNlOGU4ZTgiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSI0MCUiIHN0b3AtY29sb3I9IiNkMGQwZDAiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjYjBiMGIwIi8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogICAgPHJhZGlhbEdyYWRpZW50IGlkPSJleWVHcmFkIiBjeD0iNDAlIiBjeT0iNDAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2E4ZTA2MyIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiM1NmFiMmYiLz4KICAgIDwvcmFkaWFsR3JhZGllbnQ+CiAgPC9kZWZzPgogIDxwYXRoIGQ9Ik0xMDgsMTIwIFExMzUsMTA1IDEyOCw4NSIgc3Ryb2tlPSIjYzhjOGM4IiBmaWxsPSJub25lIiBzdHJva2Utd2lkdGg9IjgiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgogIDxlbGxpcHNlIGN4PSI3MCIgY3k9IjExOCIgcng9IjM4IiByeT0iMzAiIGZpbGw9InVybCgjc2lsdmVyR3JhZCkiLz4KICA8Y2lyY2xlIGN4PSI3MCIgY3k9IjYyIiByPSIzMyIgZmlsbD0idXJsKCNzaWx2ZXJHcmFkKSIvPgogIDxwb2x5Z29uIHBvaW50cz0iNDIsNDIgMzgsMTIgNTgsMzQiIGZpbGw9IiNjOGM4YzgiLz4KICA8cG9seWdvbiBwb2ludHM9IjQ1LDM4IDQwLDE4IDU2LDM0IiBmaWxsPSIjZjBiMGIwIi8+CiAgPHBvbHlnb24gcG9pbnRzPSI5OCw0MiAxMDIsMTIgODIsMzQiIGZpbGw9IiNjOGM4YzgiLz4KICA8cG9seWdvbiBwb2ludHM9Ijk1LDM4IDEwMCwxOCA4NCwzNCIgZmlsbD0iI2YwYjBiMCIvPgogIDxlbGxpcHNlIGN4PSI1NSIgY3k9IjU4IiByeD0iOSIgcnk9IjEwIiBmaWxsPSJ3aGl0ZSIvPgogIDxlbGxpcHNlIGN4PSI4NSIgY3k9IjU4IiByeD0iOSIgcnk9IjEwIiBmaWxsPSJ3aGl0ZSIvPgogIDxlbGxpcHNlIGN4PSI1NiIgY3k9IjU4IiByeD0iNiIgcnk9IjciIGZpbGw9InVybCgjZXllR3JhZCkiLz4KICA8ZWxsaXBzZSBjeD0iODQiIGN5PSI1OCIgcng9IjYiIHJ5PSI3IiBmaWxsPSJ1cmwoI2V5ZUdyYWQpIi8+CiAgPGNpcmNsZSBjeD0iNTYiIGN5PSI1OCIgcj0iMy41IiBmaWxsPSIjMjIyIi8+CiAgPGNpcmNsZSBjeD0iODQiIGN5PSI1OCIgcj0iMy41IiBmaWxsPSIjMjIyIi8+CiAgPGVsbGlwc2UgY3g9IjcwIiBjeT0iNzAiIHJ4PSIzLjUiIHJ5PSIyLjUiIGZpbGw9IiNmMGEwYTAiLz4KICA8cGF0aCBkPSJNNjYsNzQgUTcwLDc5IDc0LDc0IiBzdHJva2U9IiNhYWEiIGZpbGw9Im5vbmUiIHN0cm9rZS13aWR0aD0iMS4yIi8+CiAgPGxpbmUgeDE9IjM1IiB5MT0iNjQiIHgyPSI1NSIgeTI9IjY2IiBzdHJva2U9IiNjY2MiIHN0cm9rZS13aWR0aD0iMSIvPgogIDxsaW5lIHgxPSIzNCIgeTE9IjcwIiB4Mj0iNTQiIHkyPSI3MCIgc3Ryb2tlPSIjY2NjIiBzdHJva2Utd2lkdGg9IjEiLz4KICA8bGluZSB4MT0iMTA1IiB5MT0iNjQiIHgyPSI4NSIgeTI9IjY2IiBzdHJva2U9IiNjY2MiIHN0cm9rZS13aWR0aD0iMSIvPgogIDxsaW5lIHgxPSIxMDYiIHkxPSI3MCIgeDI9Ijg2IiB5Mj0iNzAiIHN0cm9rZT0iI2NjYyIgc3Ryb2tlLXdpZHRoPSIxIi8+CiAgPGVsbGlwc2UgY3g9IjU1IiBjeT0iMTQyIiByeD0iMTIiIHJ5PSI2IiBmaWxsPSIjZDhkOGQ4Ii8+CiAgPGVsbGlwc2UgY3g9Ijg1IiBjeT0iMTQyIiByeD0iMTIiIHJ5PSI2IiBmaWxsPSIjZDhkOGQ4Ii8+Cjwvc3ZnPgo='
 
 
 # ============================================================
@@ -301,7 +289,7 @@ def get_cat_html(action="sleep", bubble_text="", show_fireworks=False, mood="nor
     
     # 图片
     if has_photo:
-        img_html = f'<img src="{CAT_PHOTO_B64}" class="cat-img {mood}" id="cat-photo" onclick="showCatProfile()">'
+        img_html = f'<img src="{CAT_SVG_B64}" class="cat-img {mood}" id="cat-photo" onclick="showCatProfile()">'
     else:
         img_html = '<span class="cat-img placeholder" onclick="showCatProfile()">🐱</span>'
     
@@ -364,7 +352,7 @@ def get_cat_html(action="sleep", bubble_text="", show_fireworks=False, mood="nor
     <div class="cat-modal-overlay" id="catProfileModal">
         <div class="cat-modal-card">
             {"".join([
-                f'<img src="{CAT_PHOTO_B64}" class="cat-profile-img">'
+                f'<img src="{CAT_SVG_B64}" class="cat-profile-img">'
                 if has_photo else '<span style="font-size:80px;display:block;">🐱</span>'
             ])}
             <h3>{CAT_PROFILE["name"]}</h3>
