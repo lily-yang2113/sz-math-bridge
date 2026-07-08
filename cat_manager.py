@@ -3,7 +3,19 @@
 猫咪管家 - 桌面宠物猫咪
 包含猫咪状态管理、心情系统、动画和交互反馈
 """
+CAT_PHOTO_PATH = "cat.jpg"
 
+def _load_photo_b64():
+    if CAT_PHOTO_PATH and Path(CAT_PHOTO_PATH).exists():
+        try:
+            with open(CAT_PHOTO_PATH, "rb") as f:
+                data = base64.b64encode(f.read()).decode()
+            return "data:image/jpeg;base64," + data
+        except:
+            return ""
+    return ""
+
+CAT_PHOTO_B64 = _load_photo_b64()
 import json
 import datetime
 from pathlib import Path
