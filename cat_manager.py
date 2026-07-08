@@ -3,6 +3,11 @@
 猫咪管家 - 桌面宠物猫咪
 包含猫咪状态管理、心情系统、动画和交互反馈
 """
+import json
+import base64
+import datetime
+from pathlib import Path
+
 CAT_PHOTO_PATH = "cat.jpg"
 
 def _load_photo_b64():
@@ -16,9 +21,7 @@ def _load_photo_b64():
     return ""
 
 CAT_PHOTO_B64 = _load_photo_b64()
-import json
-import datetime
-from pathlib import Path
+
 
 # ============================================================
 # 猫咪档案
@@ -298,7 +301,7 @@ def get_cat_html(action="sleep", bubble_text="", show_fireworks=False, mood="nor
     
     # 图片
     if has_photo:
-        img_html = f'<img src="{CAT_PHOTO_PATH}" class="cat-img {mood}" id="cat-photo" onclick="showCatProfile()">'
+        img_html = f'<img src="{CAT_PHOTO_B64}" class="cat-img {mood}" id="cat-photo" onclick="showCatProfile()">'
     else:
         img_html = '<span class="cat-img placeholder" onclick="showCatProfile()">🐱</span>'
     
@@ -361,7 +364,7 @@ def get_cat_html(action="sleep", bubble_text="", show_fireworks=False, mood="nor
     <div class="cat-modal-overlay" id="catProfileModal">
         <div class="cat-modal-card">
             {"".join([
-                f'<img src="{CAT_PHOTO_PATH}" class="cat-profile-img">'
+                f'<img src="{CAT_PHOTO_B64}" class="cat-profile-img">'
                 if has_photo else '<span style="font-size:80px;display:block;">🐱</span>'
             ])}
             <h3>{CAT_PROFILE["name"]}</h3>
