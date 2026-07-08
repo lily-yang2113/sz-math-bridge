@@ -12,6 +12,9 @@ from pathlib import Path
 from content import CHAPTERS, SECTION_LIST, SECTIONS, get_section_ids
 from collections import defaultdict
 import socket
+from cat_manager import get_cat_styles, get_cat_html, init_cat_session
+from cat_manager import on_correct_answer, on_wrong_answer, on_all_done
+from cat_manager import update_cat_mood, clear_cat_action, CatMood
 
 # ============================================================
 # 配置页面
@@ -59,6 +62,8 @@ st.markdown("""
     .badge-pending { background: #f8f9fa; color: #666; }
 </style>
 """, unsafe_allow_html=True)
+
+st.markdown(get_cat_styles(), unsafe_allow_html=True)
 
 # ============================================================
 # 数据文件路径
@@ -116,6 +121,9 @@ def init_session_state():
         st.session_state.practicing = False
     if "testing" not in st.session_state:
         st.session_state.testing = False
+        init_cat_session()
+        if "cat_mood_mgr" not in st.session_state:
+            st.session_state.cat_mood_mgr = CatMood(DATA_DIR)
 
 
 # ============================================================
@@ -357,8 +365,10 @@ def render_main():
                             correct = check_answer(ans, q["answer"], q["type"])
                             if correct:
                                 st.session_state.q_feedback[qid] = "correct"
+                                on_correct_answer()
                             else:
                                 st.session_state.q_feedback[qid] = "wrong"
+                                on_wrong_answer()
                                 if st.session_state.hint_count.get(qid, 0) >= 3:
                                     st.session_state.q_feedback[qid] = "giveup"
                             st.rerun()
